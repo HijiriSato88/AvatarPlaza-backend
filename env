@@ -1,0 +1,4 @@
+DATABASE_DEFAULT_USER = 'test_remote_user'
+DATABASE_DEFAULT_PASSWORD = 'sicts2212b'
+DATABASE_DEV_NAME = 'avatar_plaza_development'
+DATABASE_TEST_NAME = 'avatar_plaza_test'
