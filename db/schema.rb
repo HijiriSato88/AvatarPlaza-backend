@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_08_073226) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_11_061509) do
   create_table "avatars", primary_key: "avatar_id", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "body", default: 0
     t.integer "accessory", default: 0
     t.boolean "logged_in", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "comment", default: ""
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

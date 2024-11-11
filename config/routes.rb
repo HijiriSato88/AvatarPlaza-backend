@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   #ログイン
-  get    '/login/current',   to: 'sessions#show'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
