@@ -9,15 +9,15 @@ class UsersController < ApplicationController
 
     #ユーザーの新規登録を行う
     def create
-        #新しいuserオブジェクトをuser_paramsで初期化している。
-        user = User.new(user_params)
-        #user.saveでUserモデルの保存を試みて成功したら登録完了処理、そうでなければエラー処理を行う。
+        avatar = Avatar.find_or_create_by(avatar_id: params[:user][:student_id])
+        user = User.new(user_params.merge(avatar_id: avatar.avatar_id))
         if user.save
-            render json:{message: "ユーザー登録が完了しました。",user: user },states: :created
+            render json: { message: "ユーザー登録が完了しました。", user: user }, status: :created
         else
-            render json:{errors: user.errors.full_messages }, status: unprocessable_entity
+            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
         end
     end
+
     #ユーザーの削除を行う。
     def destroy
         #リクエストのパラメータからstudent_idを取得し、それに基づいて対象のユーザーを検索している。
@@ -35,6 +35,6 @@ class UsersController < ApplicationController
     #params.require(:user)ではパラメータからuserというキーのデータが必須であることを指定している。
     #permit()内は指定した属性のみを許可し、その他のデータは許可しないようになっている。
     def user_params
-        params.require(:user).permit(name:,student_id:,email:,password_digest:)#登録するための要素を追加
+        params.require(:user).permit(:name, :student_id, :email, :password)
     end
 end
