@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-    #ここに呼び出されたらログインしている人を確認して、ログインしていたらその人のデータをjsonで取得するプログラムを書く
-    #今回はUser,Avaterテーブルがあるので、ログインしているAvaterの情報と共通しているカラムを利用してユーザー情報を取得する
-    #情報は二つのテーブル両方の全部のデータを取得する
     def index
-        @logged_in_users=Users.joins(:avatars).where(avatars{logged_in:true})
-        render json:@logged_in_users
+        #includesを使ってuser,avatarをくっつける。その中でlogged_inがtrueのやつをフィルタリングする。
+        @logged_in_users = User.includes(:avatar).where(avatars: { logged_in: true })
+        # includes を使って関連する Avatar データを一緒に取得。
+        render json: @logged_in_users,status: :ok
     end
 end
