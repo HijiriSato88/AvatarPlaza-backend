@@ -4,7 +4,7 @@ class UsersController < ApplicationController
         #includesを使ってuser,avatarをくっつける。その中でlogged_inがtrueのやつをフィルタリングする。
         @logged_in_users = User.includes(:avatar).where(avatars: { logged_in: true })
         # includes を使って関連する Avatar データを一緒に取得。
-        render json: @logged_in_users,status: :ok
+        render json: @logged_in_users.to_json(include: :avatar), status: :ok
     end
 
     #ユーザーの新規登録を行う
