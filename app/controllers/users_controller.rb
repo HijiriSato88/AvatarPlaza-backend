@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+    
     def index
         #includesを使ってuser,avatarをくっつける。その中でlogged_inがtrueのやつをフィルタリングする。
         @logged_in_users = User.includes(:avatar).where(avatars: { logged_in: true })

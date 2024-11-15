@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-   #ログイン時 
-   def create
+    
+    def create
 
         #emailがデータベース上にあるものと一致するならuserにUserテーブルを格納
         user = User.find_by(email: params[:email].downcase)
