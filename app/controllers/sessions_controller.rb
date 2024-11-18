@@ -2,8 +2,8 @@ class SessionsController < ApplicationController
     
     def create
 
-        #emailがデータベース上にあるものと一致するならuserにUserテーブルを格納
-        user = User.find_by(email: params[:email].downcase)
+        #student_idがデータベース上にあるものと一致するならuserにUserテーブルを格納
+        user = User.find_by(student_id: params[:student_id].downcase)
 
         #userがtrueかつpasswordがuserのものと一致するなら
         if user && user.authenticate(params[:password])
