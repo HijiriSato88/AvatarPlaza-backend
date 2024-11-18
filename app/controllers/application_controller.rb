@@ -35,7 +35,7 @@ class ApplicationController < ActionController::API
 
             #テーブル内のlogged_inカラムをfaluseにする
             #unity上で退出しないままページを閉じた場合を想定してつけておく
-            current_user.update(logged_in: false)
+            current_user.avatar.update(logged_in: false)
 
             #保存しておいたログイン状態を破棄
             session.delete(:user_id)
