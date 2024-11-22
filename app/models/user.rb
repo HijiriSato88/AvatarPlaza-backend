@@ -13,4 +13,5 @@ class User < ApplicationRecord
     
     #パスワードのバリデーション,文字列の長さは6文字以上20文字以下でなければならない。
     validates:password_digest,presence:true,length:{in:6..20}
+    
 end
