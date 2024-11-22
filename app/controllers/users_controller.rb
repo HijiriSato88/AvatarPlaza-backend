@@ -18,17 +18,6 @@ class UsersController < ApplicationController
         end
     end
 
-    #ユーザーの削除を行う。
-    def destroy
-        #リクエストのパラメータからstudent_idを取得し、それに基づいて対象のユーザーを検索している。
-        user = User.find_by(id: params[:student_id])
-        #userが存在し、user.destroyによってアカウントの削除が成された場合削除処理をそうでない場合、エラー処理を行う。
-        if user && user.destroy
-            render json: {message:"アカウントが削除されました。"},status: :ok
-        else
-            render json: {error:"アカウントの削除に失敗しました。"},status: :not_found
-        end
-    end
     #privateによってuser_paramsはこのコントローラー内でしか使用できない。
     private
 

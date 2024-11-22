@@ -1,12 +1,28 @@
 class AvatarsController < ApplicationController
     before_action :set_avatar
 
+    def avatar_login
+        if @avatar.update(logged_in: true)
+            render json: { update: true }, status: :ok
+        else
+            render json: { status: 'Error', message: 'Failed to update logged_in' }
+        end
+    end
+
+    def avatar_logout
+        if @avatar.update(logged_in: false)
+            render json: { update: true }, status: :ok
+        else
+            render json: { status: 'Error', message: 'Failed to update logged_out' }
+        end
+    end
+    
     def update_accessory
-       if @avatar.update(avatar_params)
+        if @avatar.update(avatar_params)
             render json: { message: "success to update accessory", avatar: @avatar  }, status: :ok
-       else
+        else
             render json: { message: "failed to update accessory", details: @avatar.errors.full_message}, status: :unprocessable_entity
-       end
+        end
     end
 
     def update_comment
