@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_22_045105) do
-  create_table "avatars", primary_key: "avatar_id", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+ActiveRecord::Schema[7.1].define(version: 2024_11_25_060840) do
+  create_table "avatars", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "accessory_body", default: 0
     t.integer "accessory_head", default: 0
     t.boolean "logged_in", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "comment", default: ""
+    t.bigint "user_id", null: false
     t.integer "accessory_leg", default: 0
+    t.index ["user_id"], name: "fk_rails_457088d9d9"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -26,11 +28,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_22_045105) do
     t.string "student_id", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.string "avatar_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["avatar_id"], name: "fk_rails_6527170f4d"
   end
 
-  add_foreign_key "users", "avatars", primary_key: "avatar_id"
+  add_foreign_key "avatars", "users", on_delete: :cascade
 end
