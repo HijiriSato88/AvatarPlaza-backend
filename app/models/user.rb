@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    belongs_to :avatar
+    has_one :avatar
     has_secure_password
 
     #名前のバリデーション,ひらがな、かたかな、漢字、アルファベットのみ認める。

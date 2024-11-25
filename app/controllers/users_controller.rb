@@ -7,28 +7,17 @@ class UsersController < ApplicationController
         render json: @logged_in_users.to_json(include: :avatar), status: :ok
     end
 
-    #ユーザーの新規登録を行う
     def create
-        avatar = Avatar.find_or_create_by(avatar_id: params[:user][:student_id])
-        user = User.new(user_params.merge(avatar_id: avatar.avatar_id))
+        user = User.new(user_params)
         if user.save
-            render json: { message: "ユーザー登録が完了しました。", user: user }, status: :created
+            avatar = Avatar.create(user: user)
+            render json: { message: "ユーザー登録が完了しました。", user: user, avatar: avatar }, status: :created
         else
             render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
-    #ユーザーの削除を行う。
-    def destroy
-        #リクエストのパラメータからstudent_idを取得し、それに基づいて対象のユーザーを検索している。
-        user = User.find_by(id: params[:student_id])
-        #userが存在し、user.destroyによってアカウントの削除が成された場合削除処理をそうでない場合、エラー処理を行う。
-        if user && user.destroy
-            render json: {message:"アカウントが削除されました。"},status: :ok
-        else
-            render json: {error:"アカウントの削除に失敗しました。"},status: :not_found
-        end
-    end
+
     #privateによってuser_paramsはこのコントローラー内でしか使用できない。
     private
 
