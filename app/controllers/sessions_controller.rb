@@ -47,7 +47,27 @@ class SessionsController < ApplicationController
 
     def me
         if logged_in?
-            render json: { user: current_user }, status: :ok
+            user = current_user
+            avatar = user.avatar
+        
+            fields = params[:fields]&.split(',')&.map(&:to_sym)
+
+            user_data = {
+                id: user.id,
+                name: user.name,
+                student_id: user.student_id,
+                accessory_head: avatar&.accessory_head,
+                accessory_body: avatar&.accessory_body,
+                accessory_leg: avatar&.accessory_leg,
+                logged_in: avatar&.logged_in,
+                comment: avatar&.comment
+            }
+        
+            if fields.present?
+                user_data = user_data.slice(*fields)
+            end
+        
+            render json: { user: user_data }, status: :ok
         else
             render json: { message: "ログインしていません。" }, status: :unauthorized
         end
