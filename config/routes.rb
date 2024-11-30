@@ -5,10 +5,8 @@ Rails.application.routes.draw do
   get '/show', to: 'sessions#me'
 
   #アバターの情報更新
-  patch '/users/:id/avatar/accessory', to: 'avatars#update_accessory'
-  patch '/users/:id/avatar/comment', to: 'avatars#update_comment'
-  patch '/users/:id/avatar/login', to: 'avatars#avatar_login'
-  patch '/users/:id/avatar/logout', to: 'avatars#avatar_logout'
-
-  #get "up" => "rails/health#show", as: :rails_health_check
+  patch '/avatar/login', to: 'avatars#avatar_login'
+  patch '/avatar/logout', to: 'avatars#avatar_logout'
+  patch '/avatar/accessory/update', to: 'avatars#update_accessory_me'
+  patch '/avatar/comment/update', to: 'avatars#update_comment_me'
 end
