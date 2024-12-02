@@ -130,6 +130,10 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
+    passenger (6.0.23)
+      rack (>= 1.6.13)
+      rackup
+      rake (>= 12.3.3)
     psych (5.1.2)
       stringio
     puma (6.4.3)
@@ -202,6 +206,7 @@ DEPENDENCIES
   debug
   dotenv-rails
   mysql2 (~> 0.5)
+  passenger
   puma (>= 5.0)
   rack-cors
   rails (~> 7.1.4, >= 7.1.4.1)
