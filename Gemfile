@@ -13,6 +13,8 @@ gem "puma", ">= 5.0"
 
 gem 'dotenv-rails'
 
+gem 'passenger'
+
 gem 'bcrypt', '~> 3.1', '>= 3.1.20'
 
 #cors
