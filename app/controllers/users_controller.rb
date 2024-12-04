@@ -36,11 +36,7 @@ class UsersController < ApplicationController
         end
     end
 
-    #privateによってuser_paramsはこのコントローラー内でしか使用できない。
     private
-
-    #params.require(:user)ではパラメータからuserというキーのデータが必須であることを指定している。
-    #permit()内は指定した属性のみを許可し、その他のデータは許可しないようになっている。
     def user_params
         params.require(:user).permit(:name, :student_id, :email, :password)
     end
