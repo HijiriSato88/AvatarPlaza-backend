@@ -1,24 +1,15 @@
-# README
+# 研究室在室管理アプリ - バックエンド
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+研究室在室管理アプリのバックエンドAPIを構築するためのRailsプロジェクト
 
-Things you may want to cover:
+## 📚 技術スタック
 
-* Ruby version
+- **Ruby**: 3.3.1  
+- **Rails**: 7.1.4.1  
+- **データベース**: MySQL  
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+---
+## 🌟 主な機能
+ - 研究室メンバーの在室状況の管理
+ - メンバーのログイン・ログアウトの記録
+ - アバターの情報を更新
