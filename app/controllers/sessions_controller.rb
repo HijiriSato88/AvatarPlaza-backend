@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
             render json: { message: "ログインが成功しました。", user: user }, status: :ok
         else
             #表示
-            render json: { message: "e-mailまたはパスワードが無効です。" }, status: :unauthorized
+            render json: { message: "パスワードが無効です。" }, status: :unauthorized
         end
     end
 
