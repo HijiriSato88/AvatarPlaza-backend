@@ -46,8 +46,8 @@ Rails.application.configure do
     :port => '587',
     :domain => 'smtp.gmail.com',
     :authentication => 'plain',
-    :user_name => 'satohiji88@gmail.com',
-    :password => 'gksqbcnbpuqpqbii', # ここに生成されたアプリパスワードを設定
+    :user_name => ENV['EMAIL_POST_USER'],
+    :password => ENV['EMAIL_APP_PASSWORD'],
   }
 
   # Print deprecation notices to the Rails logger.
