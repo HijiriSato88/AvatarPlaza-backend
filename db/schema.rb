@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_25_060840) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_07_022651) do
   create_table "avatars", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "accessory_body", default: 0
     t.integer "accessory_head", default: 0
@@ -30,6 +30,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_25_060840) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
   end
 
   add_foreign_key "avatars", "users", on_delete: :cascade
